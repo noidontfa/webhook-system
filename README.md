@@ -36,11 +36,11 @@ Maintenance: Thinh Ngo <thinhngo1198@gmail.com>
 │   └── services
 │       ├── __init__.py
 │       └── webhook_event.py
+├── message_queue 
 │   ├── __init__.py
 │   ├── consumer.py
 │   └── services
 │       ├── __init__.py
-│       ├── __pycache__
 │       └── webhook_handler.py
 ├── tasks
 │   ├── __init__.py

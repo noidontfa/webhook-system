@@ -10,7 +10,7 @@ from app_server.repos.webhook_event import WebhookEventRepository
 from utils.queue import send_queue
 from utils.task import send_task
 from utils.log import write_log
-from utils import hmacsha1
+from utils import hmacsha256
 
 
 class WebhookEventService:
@@ -61,7 +61,7 @@ class WebhookEventService:
 
         # Verify signature
         hmac = r.json().get('hmac')
-        if not hmacsha1.verify(secret_key, token, hmac):
+        if not hmacsha256.verify(secret_key, token, hmac):
             raise InvalidAPIUsage("Invalid Signature")
         self.repo.active_webhook(dict(webhook_id=webhook_id, updated=time.time()))
 
@@ -93,7 +93,7 @@ class WebhookEventService:
                 "url": webhook.url,
                 "headers": webhook.headers,
                 "payload": data.get('payload'),
-                "hmac": hmacsha1.generate(webhook.secret_key, f"{event_type}")  # For simplify
+                "hmac": hmacsha256.generate(webhook.secret_key, f"{event_type}")  # For simplify
             },
             status="CRE",
             created=time.time(),
