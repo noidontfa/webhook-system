@@ -12,12 +12,10 @@ Maintenance: Thinh Ngo <thinhngo1198@gmail.com>
 ```
 ├── Dockerfile
 ├── README.md
-├── app_server
 ├── config.py
 ├── docker-compose-prod.yml
 ├── docker-compose.yml
 ├── requirements.txt
-├── message_queue
 ├── webhook_handler.py
 ├── app_server 
 │   ├── __init__.py
